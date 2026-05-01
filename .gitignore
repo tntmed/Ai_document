@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+
+# Database (dev only — do not commit)
+backend/*.db
+backend/*.db-journal
+backend/*.db-shm
+backend/*.db-wal
+
+# File storage (uploaded files)
+/storage/
+backend/storage/
+
+# Environment variables — NEVER commit secrets
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Vite build output
+frontend/dist/
+frontend/.vite/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Alembic (keep versions, ignore env cache)
+backend/alembic/__pycache__/
