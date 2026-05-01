@@ -24,18 +24,28 @@ def _get_or_create_role(db: Session, role_name: str) -> Role:
 
 def _to_out(user: User) -> UserOut:
     role = user.role
-    dept = None
-    if user.department:
-        dept = DepartmentOut(id=user.department.id, name=user.department.name, code=user.department.code)
+    dept = DepartmentOut(id=user.department.id, name=user.department.name, code=user.department.code) \
+           if user.department else None
     return UserOut(
         id=user.id,
         username=user.username,
         full_name=user.full_name,
+        display_name=user.display_name,
         role=role,
         department_id=user.department_id,
         department=dept,
         is_active=user.is_active,
+        employee_code=user.employee_code,
+        first_name=user.first_name,
+        last_name=user.last_name,
+        email=user.email,
+        phone=user.phone,
+        position=user.position,
+        sub_department=user.sub_department,
+        is_force_password_change=user.is_force_password_change,
+        last_login_at=user.last_login_at,
         created_at=user.created_at,
+        updated_at=user.updated_at,
     )
 
 
@@ -135,6 +145,15 @@ def create_user(
         password_hash=hash_password(payload.password),
         full_name=payload.full_name,
         department_id=payload.department_id,
+        employee_code=payload.employee_code,
+        first_name=payload.first_name,
+        last_name=payload.last_name,
+        display_name=payload.display_name,
+        email=payload.email,
+        phone=payload.phone,
+        position=payload.position,
+        sub_department=payload.sub_department,
+        is_force_password_change=payload.is_force_password_change,
     )
     db.add(user)
     db.flush()
@@ -173,14 +192,23 @@ def update_user(
     if not user:
         raise HTTPException(status_code=404, detail="ไม่พบผู้ใช้")
 
-    if payload.full_name is not None:
-        user.full_name = payload.full_name
-    if payload.department_id is not None:
-        user.department_id = payload.department_id
-    if payload.is_active is not None:
-        user.is_active = payload.is_active
-    if payload.password:
-        user.password_hash = hash_password(payload.password)
+    # Core fields
+    if payload.full_name      is not None: user.full_name      = payload.full_name
+    if payload.department_id  is not None: user.department_id  = payload.department_id
+    if payload.is_active      is not None: user.is_active      = payload.is_active
+    if payload.password:                   user.password_hash  = hash_password(payload.password)
+
+    # Enterprise profile fields
+    if payload.employee_code  is not None: user.employee_code  = payload.employee_code
+    if payload.first_name     is not None: user.first_name     = payload.first_name
+    if payload.last_name      is not None: user.last_name      = payload.last_name
+    if payload.display_name   is not None: user.display_name   = payload.display_name
+    if payload.email          is not None: user.email          = payload.email
+    if payload.phone          is not None: user.phone          = payload.phone
+    if payload.position       is not None: user.position       = payload.position
+    if payload.sub_department is not None: user.sub_department = payload.sub_department
+    if payload.is_force_password_change is not None:
+        user.is_force_password_change = payload.is_force_password_change
 
     if payload.role:
         if payload.role not in VALID_ROLES:

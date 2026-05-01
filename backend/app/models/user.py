@@ -26,13 +26,38 @@ class Role(Base):
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String(50), unique=True, nullable=False, index=True)
+    id            = Column(Integer, primary_key=True, index=True)
+    username      = Column(String(50),  unique=True, nullable=False, index=True)
     password_hash = Column(String(255), nullable=False)
+
+    # ── Core identity (kept for backward compat) ──────────────────────────────
     full_name = Column(String(100), nullable=False)
+
+    # ── Enterprise profile fields ─────────────────────────────────────────────
+    employee_code = Column(String(50),  nullable=True, unique=True, index=True)
+    first_name    = Column(String(100), nullable=True)
+    last_name     = Column(String(100), nullable=True)
+    display_name  = Column(String(100), nullable=True)   # falls back to full_name if NULL
+    email         = Column(String(200), nullable=True, unique=True, index=True)
+    phone         = Column(String(20),  nullable=True)
+    position      = Column(String(100), nullable=True)
+    sub_department = Column(String(100), nullable=True)
+
+    # ── Access control ────────────────────────────────────────────────────────
+    is_active                = Column(Boolean,  default=True,  nullable=False)
+    is_force_password_change = Column(Boolean,  default=True,  nullable=False)
+
+    # ── Timestamps ────────────────────────────────────────────────────────────
+    last_login_at = Column(DateTime, nullable=True)
+    created_at    = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at    = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=True)
+
     department_id = Column(Integer, ForeignKey("departments.id"), nullable=True)
-    is_active = Column(Boolean, default=True, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    @property
+    def effective_display_name(self) -> str:
+        """display_name → full_name fallback used by all serialisers."""
+        return self.display_name or self.full_name
 
     department = relationship("Department", back_populates="users", foreign_keys=[department_id])
     user_roles = relationship("UserRole", back_populates="user", cascade="all, delete-orphan")
