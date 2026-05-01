@@ -1,74 +1,4 @@
-# แก้ไข password ให้สั้นลงและใช้รูปแบบที่ง่ายขึ้น
-users_data = [
-    {
-        "username": "admin",
-        "password": "admin123",
-        "full_name": "ผู้ดูแลระบบ",
-        "role": "admin",
-        "dept_code": None,
-    },
-    {
-        "username": "chief", 
-        "password": "chief123",
-        "full_name": "ผู้อำนวยการ ศูนย์คอมพิวเตอร์",
-        "role": "chief",
-        "dept_code": None,
-    },
-    {
-        "username": "thurakarn",
-        "password": "staff123", 
-        "full_name": "นางสมใจ ธุรการ",
-        "role": "admin_staff",
-        "dept_code": "ADMIN",
-    },
-    {
-        "username": "thurakarn2",
-        "password": "staff123",
-        "full_name": "นางสาวมาลี ธุรการ",
-        "role": "staff",
-        "dept_code": "ADMIN",
-    },
-    {
-        "username": "nethead",
-        "password": "staff123",
-        "full_name": "นายสมชาย เครือข่าย",
-        "role": "department_head",
-        "dept_code": "IT-NET",
-    },
-    {
-        "username": "netsec",
-        "password": "staff123",
-        "full_name": "นายวิชัย ระบบเครือข่าย",
-        "role": "staff",
-        "dept_code": "IT-NET",
-    },
-    {
-        "username": "proghead",
-        "password": "staff123",
-        "full_name": "นายสุรชัย โปรแกรมเมอร์",
-        "role": "department_head",
-        "dept_code": "PROG",
-    },
-    {
-        "username": "dev1",
-        "password": "staff123",
-        "full_name": "นางสาวอรุณี นักพัฒนา",
-        "role": "staff",
-        "dept_code": "PROG",
-    },
-    {
-        "username": "techhead",
-        "password": "staff123",
-        "full_name": "นายประสิทธิ์ ช่างเทคนิค",
-極端
-    {
-        "username": "tech1",
-        "password": "staff123", 
-        "full_name": "นายอนุชา ช่างซ่อม",
-        "role": "staff",
-        "dept_code": "TECH",
-    },
-]"""
+"""
 Seed script — creates default departments, roles, users, and routing rules.
 Safe to run multiple times (idempotent).
 """
@@ -123,76 +53,16 @@ def seed():
 
         print("Seeding users...")
         users_data = [
-            {
-                "username": "admin",
-                "password": "admin123",
-                "full_name": "ผู้ดูแลระบบ",
-                "role": "admin",
-                "dept_code": None,
-            },
-            {
-                "username": "chief",
-                "password": "chief123",
-                "full_name": "ผู้อำนวยการ ศูนย์คอมพิวเตอร์",
-                "role": "chief",
-                "dept_code": None,
-            },
-            {
-                "username": "thurakarn",
-                "password": "staff123",
-                "full_name": "นางสมใจ ธุรการ",
-                "role": "admin_staff",
-                "dept_code": "ADMIN",
-            },
-            {
-                "username": "thurakarn2",
-                "password": "staff123",
-                "full_name": "นางสาวมาลี ธุรการ",
-                "role": "staff",
-                "dept_code": "ADMIN",
-            },
-            {
-                "username": "nethead",
-                "password": "staff123",
-                "full_name": "นายสมชาย เครือข่าย",
-                "role": "department_head",
-                "dept_code": "IT-NET",
-            },
-            {
-                "username": "netsec",
-                "password": "staff123",
-                "full_name": "นายวิชัย ระบบเครือข่าย",
-                "role": "staff",
-                "dept_code": "IT-NET",
-            },
-            {
-                "username": "proghead",
-                "password": "staff123",
-                "full_name": "นายสุรชัย โปรแกรมเมอร์",
-                "role": "department_head",
-                "dept_code": "PROG",
-            },
-            {
-                "username": "dev1",
-                "password": "staff123",
-                "full_name": "นางสาวอรุณี นักพัฒนา",
-                "role": "staff",
-                "dept_code": "PROG",
-            },
-            {
-                "username": "techhead",
-                "password": "staff123",
-                "full_name": "นายประสิทธิ์ ช่างเทคนิค",
-                "role": "department_head",
-                "dept_code": "TECH",
-            },
-            {
-                "username": "tech1",
-                "password": "staff123",
-                "full_name": "นายอนุชา ช่างซ่อม",
-                "role": "staff",
-                "dept_code": "TECH",
-            },
+            {"username": "admin",      "password": "admin123",  "full_name": "ผู้ดูแลระบบ",                    "role": "admin",           "dept_code": None},
+            {"username": "chief",      "password": "chief123",  "full_name": "ผู้อำนวยการ ศูนย์คอมพิวเตอร์",  "role": "chief",           "dept_code": None},
+            {"username": "thurakarn",  "password": "staff123",  "full_name": "นางสมใจ ธุรการ",                 "role": "admin_staff",     "dept_code": "ADMIN"},
+            {"username": "thurakarn2", "password": "staff123",  "full_name": "นางสาวมาลี ธุรการ",              "role": "staff",           "dept_code": "ADMIN"},
+            {"username": "nethead",    "password": "staff123",  "full_name": "นายสมชาย เครือข่าย",             "role": "department_head", "dept_code": "IT-NET"},
+            {"username": "netsec",     "password": "staff123",  "full_name": "นายวิชัย ระบบเครือข่าย",         "role": "staff",           "dept_code": "IT-NET"},
+            {"username": "proghead",   "password": "staff123",  "full_name": "นายสุรชัย โปรแกรมเมอร์",         "role": "department_head", "dept_code": "PROG"},
+            {"username": "dev1",       "password": "staff123",  "full_name": "นางสาวอรุณี นักพัฒนา",           "role": "staff",           "dept_code": "PROG"},
+            {"username": "techhead",   "password": "staff123",  "full_name": "นายประสิทธิ์ ช่างเทคนิค",        "role": "department_head", "dept_code": "TECH"},
+            {"username": "tech1",      "password": "staff123",  "full_name": "นายอนุชา ช่างซ่อม",              "role": "staff",           "dept_code": "TECH"},
         ]
 
         for ud in users_data:
@@ -212,38 +82,30 @@ def seed():
 
         print("Seeding routing rules...")
         routing_data = [
-            # ช่าง
-            {"keyword": "ส่งซ่อม",        "dept_code": "TECH", "priority": 5},
-            {"keyword": "คอมเสีย",         "dept_code": "TECH", "priority": 5},
-            {"keyword": "ติดตั้งคอม",      "dept_code": "TECH", "priority": 4},
-            {"keyword": "ย้ายคอม",         "dept_code": "TECH", "priority": 4},
-            {"keyword": "ซ่อมแซม",         "dept_code": "TECH", "priority": 3},
-            {"keyword": "ชำรุด",           "dept_code": "TECH", "priority": 3},
-            # โปรแกรมเมอร์
-            {"keyword": "ลงโปรแกรม",       "dept_code": "PROG", "priority": 5},
-            {"keyword": "ระบบงาน",         "dept_code": "PROG", "priority": 5},
-            {"keyword": "ติดตั้งซอฟต์แวร์","dept_code": "PROG", "priority": 4},
-            {"keyword": "โปรแกรม",         "dept_code": "PROG", "priority": 2},
-            {"keyword": "software",        "dept_code": "PROG", "priority": 2},
-            # อินเตอร์เนต
-            {"keyword": "ขอ Internet",     "dept_code": "IT-NET", "priority": 5},
-            {"keyword": "LAN",             "dept_code": "IT-NET", "priority": 5},
-            {"keyword": "Wi-Fi",           "dept_code": "IT-NET", "priority": 5},
-            {"keyword": "IP Address",      "dept_code": "IT-NET", "priority": 5},
-            {"keyword": "เครือข่าย",        "dept_code": "IT-NET", "priority": 3},
-            {"keyword": "internet",        "dept_code": "IT-NET", "priority": 3},
-            # ธุรการ
-            {"keyword": "reset password",  "dept_code": "ADMIN", "priority": 5},
-            {"keyword": "รหัสผ่าน",         "dept_code": "ADMIN", "priority": 4},
+            {"keyword": "ส่งซ่อม",         "dept_code": "TECH",   "priority": 5},
+            {"keyword": "คอมเสีย",          "dept_code": "TECH",   "priority": 5},
+            {"keyword": "ติดตั้งคอม",       "dept_code": "TECH",   "priority": 4},
+            {"keyword": "ย้ายคอม",          "dept_code": "TECH",   "priority": 4},
+            {"keyword": "ซ่อมแซม",          "dept_code": "TECH",   "priority": 3},
+            {"keyword": "ชำรุด",            "dept_code": "TECH",   "priority": 3},
+            {"keyword": "ลงโปรแกรม",        "dept_code": "PROG",   "priority": 5},
+            {"keyword": "ระบบงาน",          "dept_code": "PROG",   "priority": 5},
+            {"keyword": "ติดตั้งซอฟต์แวร์", "dept_code": "PROG",   "priority": 4},
+            {"keyword": "โปรแกรม",          "dept_code": "PROG",   "priority": 2},
+            {"keyword": "software",         "dept_code": "PROG",   "priority": 2},
+            {"keyword": "ขอ Internet",      "dept_code": "IT-NET", "priority": 5},
+            {"keyword": "LAN",              "dept_code": "IT-NET", "priority": 5},
+            {"keyword": "Wi-Fi",            "dept_code": "IT-NET", "priority": 5},
+            {"keyword": "IP Address",       "dept_code": "IT-NET", "priority": 5},
+            {"keyword": "เครือข่าย",         "dept_code": "IT-NET", "priority": 3},
+            {"keyword": "internet",         "dept_code": "IT-NET", "priority": 3},
+            {"keyword": "reset password",   "dept_code": "ADMIN",  "priority": 5},
+            {"keyword": "รหัสผ่าน",          "dept_code": "ADMIN",  "priority": 4},
         ]
 
         for rd in routing_data:
             dept = depts[rd["dept_code"]]
-            existing = (
-                db.query(RoutingRule)
-                .filter(RoutingRule.keyword == rd["keyword"])
-                .first()
-            )
+            existing = db.query(RoutingRule).filter(RoutingRule.keyword == rd["keyword"]).first()
             if not existing:
                 db.add(RoutingRule(
                     keyword=rd["keyword"],
@@ -251,7 +113,7 @@ def seed():
                     priority=rd["priority"],
                     is_active=True,
                 ))
-                print(f"  + Rule: '{rd['keyword']}' → {rd['dept_code']}")
+                print(f"  + Rule: '{rd['keyword']}' -> {rd['dept_code']}")
 
         db.commit()
         print("\nSeed completed successfully.")
